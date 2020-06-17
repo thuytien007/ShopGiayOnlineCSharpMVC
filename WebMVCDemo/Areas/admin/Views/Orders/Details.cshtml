@@ -1,0 +1,75 @@
+﻿@model WebMVCDemo.Models.DonHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Chi Tiết Đơn Hàng</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Ngày Đặt Hàng")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDatHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Tổng Tiền")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Trạng Thái")
+        </dt>
+
+        <dd>
+            @if (Model.TrangThai == true)
+            {
+                @Html.Display("Đơn Hàng Thành Công!")
+            }
+            else
+            {
+                @Html.Display("Đơn Hàng Chưa Thanh Toán....")
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Thứ Tự")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Ngày Cập Nhật")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateBegin)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Tên Khách Hàng")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.TenKH)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <button style="width: 400px; height:50px; font-size:20px;background-color:#36b9cc; border-radius:8rem; border:none; margin:10px 0 0 10px">
+        @Html.ActionLink("Trở Lại", "Index")
+    </button>
+</div>

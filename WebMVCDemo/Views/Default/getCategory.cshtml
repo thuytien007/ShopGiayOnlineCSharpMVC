@@ -1,0 +1,14 @@
+﻿@model List<WebMVCDemo.Models.NhomSanPham>
+
+@foreach (var item in Model)
+{
+    <li><a href="/@ViewBag.meta/@item.Meta/">@item.TenNhom</a></li>
+}
+@foreach (var product in Model)
+{
+    <div class="resp-tabs-container">
+        <div class="tab">
+            @Html.Action("getProduct", "Default", new { id = @product.MaNhom, metatitle = @ViewBag.metatitle })
+        </div>
+    </div>
+}

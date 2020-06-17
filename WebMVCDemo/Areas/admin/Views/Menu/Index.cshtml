@@ -1,0 +1,87 @@
+﻿@using WebMVCDemo.Help
+@model IEnumerable<WebMVCDemo.Models.Menu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
+}
+
+@section _Header
+{
+    <link href="~/Areas/admin/Content/admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+}
+<h2>Quản Lý Menu</h2>
+
+<p  style="right:0">
+    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span> Thêm mới", "Create", "Create", "menu", routeValues: new { }, htmlAttributes: new { data_modal = "", @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            @Html.DisplayName("Tên Menu")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Link)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Meta)
+        </th>
+        <th>
+            @Html.DisplayName("Ẩn Menu")
+        </th>
+        <th>
+            @Html.DisplayName("Thứ Tự")
+        </th>
+        <th>
+            @Html.DisplayName("Ngày Thêm Menu")
+        </th>
+        <th></th>
+    </tr>
+
+    @{ var number = 1;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.Raw(number++)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Link)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Meta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hide)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateBegin)
+            </td>
+            <td>
+                <button style="background-color:#f6c23e;border:1px solid #858796; border-radius:4px;">@Html.ActionLink("Sửa", "Edit", new { id = item.Id })</button>
+                <button style="background-color:mediumseagreen;border:1px solid #858796; border-radius:4px;">@Html.ActionLink("Chi Tiết", "Details", new { id = item.Id })</button>
+                <button style="background-color:orangered;border:1px solid #858796; border-radius:4px;">@Html.ActionLink("Xóa", "Delete", new { id = item.Id })</button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section _Footer
+{
+    <!-- Page level plugins -->
+    <script src="~/Areas/admin/Content/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/admin/Content/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Areas/admin/Content/admin/js/demo/datatables-demo.js"></script>
+}

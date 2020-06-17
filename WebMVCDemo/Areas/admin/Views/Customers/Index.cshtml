@@ -1,0 +1,77 @@
+﻿@using WebMVCDemo.Help
+@model IEnumerable<WebMVCDemo.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/MyLayout.cshtml";
+}
+
+@section _Header
+{
+    <link href="~/Content/admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+}
+
+<h2>Quản Lý Khách Hàng</h2>
+
+<table style="margin-top:50px" class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            @Html.DisplayName("Tên Khách Hàng")
+        </th>
+        <th>
+            @Html.DisplayName("Địa Chỉ")
+        </th>
+        <th>
+            @Html.DisplayName("Số Điện Thoại")
+        </th>
+        <th>
+            @Html.DisplayName("Thứ Tự")
+        </th>
+        <th>
+            @Html.DisplayName("Ngày Cập Nhật")
+        </th>
+        <th></th>
+    </tr>
+
+    @{ var number = 1;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.Raw(number++)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateBegin)
+            </td>
+            <td>
+                <button style="background-color:mediumseagreen;border:1px solid #858796; border-radius:4px;">@Html.ActionLink("Chi Tiết", "Details", new { id = item.MaKH })</button>
+            </td>
+        </tr>
+    }
+</table>
+
+@section _Footer
+{
+    <!-- Page level plugins -->
+    <script src="~/Areas/admin/Content/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/admin/Content/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Areas/admin/Content/admin/js/demo/datatables-demo.js"></script>
+}
+

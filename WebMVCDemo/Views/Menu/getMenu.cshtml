@@ -1,0 +1,10 @@
+﻿@model IEnumerable<WebMVCDemo.Models.Menu>
+
+@foreach (var item in Model)
+{
+    <li>
+        <a class="menu__link" href="@ViewBag.meta/@item.Meta">
+            @item.Name
+        </a>
+    </li>
+}

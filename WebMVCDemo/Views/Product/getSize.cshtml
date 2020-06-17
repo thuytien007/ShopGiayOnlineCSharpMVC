@@ -1,0 +1,6 @@
+﻿@model IEnumerable<WebMVCDemo.Models.ChiTietSanPham>
+
+@foreach (var item in Model)
+{
+    <option value="@item.Size">@item.Size</option>
+}

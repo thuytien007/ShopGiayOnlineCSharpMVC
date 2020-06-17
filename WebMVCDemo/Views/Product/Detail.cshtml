@@ -1,0 +1,260 @@
+﻿@model WebMVCDemo.Models.ChiTietSanPham
+
+@{
+    ViewBag.Title = Model.SanPham.TenSP;
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@Styles.Render("~css/Detail")
+@Scripts.Render("~js/Detail")
+
+<!--/single_page-->
+<!-- /banner_bottom_agile_info -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LDT Shoes</title>
+    <!--/tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Elite Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //tags -->
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/flexslider.css" type="text/css" media="screen" />
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet">
+    <link href="~/Content/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+    <!-- //for bootstrap working -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="page-head_agile_info_w3l">
+        <div class="container">
+            <h3>Sản Phẩm</h3>
+            <!--/w3_short-->
+            <div class="services-breadcrumb">
+                <div class="agile_inner_breadcrumb">
+                    <ul class="w3_short">
+                        <li><a href="/trang-chu">Trang chủ</a><i>|</i></li>
+                        <li>@Model.SanPham.NhomSanPham.TenNhom<i>|</i></li>
+                        <li>@Model.SanPham.TenSP</li>
+                    </ul>
+                </div>
+            </div>
+            <!--//w3_short-->
+        </div>
+    </div>
+
+    <!-- banner-bootom-w3-agileits -->
+    <div class="banner-bootom-w3-agileits">
+        <div class="container">
+            <div class="col-md-4 single-right-left ">
+                <div class="grid images_3_of_2">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <content data-thumb="~/Content/images/@Model.SanPham.Img">
+                                <div class="thumb-image"> <img src="~/Content/images/@Model.SanPham.Img" data-imagezoom="true" class="img-responsive"> </div>
+                            </content>
+                            @*<li data-thumb="images/d1.jpg">
+                                    <div class="thumb-image"> <img src="~/Content/images/d1.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                                </li>
+                                <li data-thumb="images/d3.jpg">
+                                    <div class="thumb-image"> <img src="~/Content/images/d3.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                                </li>*@
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 single-right-left simpleCart_shelfItem">
+                <h3>@Model.SanPham.TenSP</h3>
+                <p><span class="item_price">@Model.SanPham.Gia</span></p>
+                <div class="rating1">
+                    <span class="starRating">
+                        <input id="rating5" type="radio" name="rating" value="5">
+                        <label for="rating5">5</label>
+                        <input id="rating4" type="radio" name="rating" value="4">
+                        <label for="rating4">4</label>
+                        <input id="rating3" type="radio" name="rating" value="3" checked="">
+                        <label for="rating3">3</label>
+                        <input id="rating2" type="radio" name="rating" value="2">
+                        <label for="rating2">2</label>
+                        <input id="rating1" type="radio" name="rating" value="1">
+                        <label for="rating1">1</label>
+                    </span>
+                </div>
+                <div class="color-quality" style="display: flex">
+                    <div class="color-quality-right">
+                        <h5>Size :</h5>
+                        <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
+                            @{ Html.RenderAction("getSize", "Product", new { id = @Model.MaSP });}
+                        </select>
+                    </div>
+                    <div class="color-quality-right" style="margin-left: 25px">
+                        <h5>Màu :</h5>
+                        <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
+                            <option value="null">@Model.Mau</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="occasion-cart">
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                        <form action="#" method="post">
+                            <fieldset>
+                                <input type="hidden" name="cmd" value="_cart">
+                                <input type="hidden" name="add" value="1">
+                                <input type="hidden" name="business" value=" ">
+                                <input type="hidden" name="item_name" value="@Model.SanPham.TenSP">
+                                <input type="hidden" name="amount" value="@Model.SanPham.Gia">
+                                <input type="hidden" name="currency_code" value="VND">
+                                <input type="hidden" name="return" value=" ">
+                                <input type="hidden" name="cancel_return" value=" ">
+                                <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button">
+                            </fieldset>
+                        </form>
+                    </div>
+
+                </div>
+                <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
+                    <li class="share">Chia Sẻ : </li>
+                    <li>
+                        <a href="http://www.facebook.com" class="facebook">
+                            <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                            <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.twitter.com" class="twitter">
+                            <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                            <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.instagram.com" class="instagram">
+                            <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                            <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.pinterest.com" class="pinterest">
+                            <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                            <div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+            <!-- /new_arrivals -->
+            <div class="responsive_tabs_agileits">
+                <div id="horizontalTab">
+                    <ul class="resp-tabs-list">
+                        <li>Mô tả sản phẩm</li>
+                    </ul>
+                    <div class="resp-tabs-container">
+                        <!--/tab_one-->
+                        <div class="tab">
+                            <div class="single_page_agile_its_w3ls">
+                                <p class="w3ls_para">@Model.SanPham.MoTa</p>
+                            </div>
+                        </div>
+                        <!--//tab_one-->
+                    </div>
+                </div>
+            </div>
+            <!-- //new_arrivals -->
+            @* Sản phẩm cùng danh mục *@
+            <div class="w3_agile_latest_arrivals">
+                <h3 class="wthree_text_info">Sản phẩm cùng danh mục</h3>
+                @{Html.RenderAction("getProduct", "Default", new { id = @Model.SanPham.NhomSanPham.MaNhom, metatitle = @ViewBag.metatitle });}
+            </div>
+            @* Sản phẩm cùng danh mục *@
+
+        </div>
+    </div>
+    }
+
+    <!--//single_page-->
+    <a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- js -->
+    <script type="text/javascript" src="~/Scripts/js/jquery-2.1.4.min.js"></script>
+    <!-- //js -->
+    <script src="~/Scripts/js/modernizr.custom.js"></script>
+    <!-- Custom-JavaScript-File-Links -->
+    <!-- single -->
+    <script src="~/Scripts/js/imagezoom.js"></script>
+    <!-- single -->
+    <!-- script for responsive tabs -->
+    <script src="~/Scripts/js/easy-responsive-tabs.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true,   // 100% fit in a container
+                closed: 'accordion', // Start closed if in accordion view
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#tabInfo');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
+            $('#verticalTab').easyResponsiveTabs({
+                type: 'vertical',
+                width: 'auto',
+                fit: true
+            });
+        });
+    </script>
+    <!-- FlexSlider -->
+    <script src="~/Scripts/js/jquery.flexslider.js"></script>
+    <script>
+        // Can also be used with $(document).ready()
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
+    <!-- //FlexSlider-->
+    <!-- //script for responsive tabs -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="~/Scripts/js/move-top.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/jquery.easing.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="~/Scripts/js/bootstrap.js"></script>
+</body>
+</html>
